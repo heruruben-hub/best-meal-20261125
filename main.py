@@ -20,6 +20,7 @@ def main() -> int:
     assert 1 <= len(text) <= 200, f"entry must be 1-200 characters, got {len(text)}"
     assert text.strip(), "entry must not be only whitespace"
     assert text.count(".") == 1 and text.endswith("."), "entry must be exactly one sentence"
+    assert "\n" not in text and "  " not in text, "entry must be a single clean line"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(text + "\n")
